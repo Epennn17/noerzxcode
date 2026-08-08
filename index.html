@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoerzXcode — Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * { scroll-behavior: smooth; }
+        body { background: #09090b; }
+        .glass { background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); border-color: #3f3f46; }
+        .nav-link { transition: color 0.2s; position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #fff; transition: width 0.3s ease; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .mobile-menu { transition: all 0.3s ease-in-out; transform-origin: top; }
+        .mobile-menu.closed { opacity: 0; transform: scaleY(0.8); pointer-events: none; }
+        .mobile-menu.open { opacity: 1; transform: scaleY(1); pointer-events: auto; }
+        .toast { animation: slideUp 0.4s ease forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .spinner { border: 3px solid #27272a; border-top-color: #fff; border-radius: 50%; width: 28px; height: 28px; animation: spin 0.7s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .fade-in { animation: fadeIn 0.5s ease forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #18181b; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+    </style>
+</head>
+<body>
+
+    <!-- ====== NAVBAR ====== -->
+    <nav class="sticky top-0 z-50 glass border-b border-zinc-800/60 px-4 py-3 md:px-6">
+        <div class="mx-auto flex max-w-7xl items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-lg font-bold text-white tracking-tight">
+                <i data-lucide="code-2" class="h-5 w-5"></i>
+                NoerzXcode
+            </a>
+            <div class="hidden items-center gap-6 text-sm font-medium text-zinc-400 md:flex">
+                <a href="index.html" class="nav-link active text-white">Home</a>
+                <a href="tools.html" class="nav-link hover:text-white">Tools</a>
+                <a href="canvas.html" class="nav-link hover:text-white">Canvas</a>
+                <a href="downloader.html" class="nav-link hover:text-white">Downloader</a>
+                <a href="about.html" class="nav-link hover:text-white">About</a>
+            </div>
+            <button id="menuToggle" class="text-zinc-400 transition hover:text-white md:hidden" aria-label="Toggle menu">
+                <i data-lucide="menu" class="h-6 w-6"></i>
+            </button>
+        </div>
+        <div id="mobileMenu" class="mobile-menu closed mt-3 flex flex-col gap-2 border-t border-zinc-800/60 pt-4 md:hidden">
+            <a href="index.html" class="rounded-lg px-3 py-2 text-sm font-medium text-white bg-zinc-800/40">Home</a>
+            <a href="tools.html" class="rounded-lg px-3 py-2 text-sm font-medium text-zinc-400 hover:bg-zinc-800/40 hover:text-white transition">Tools</a>
+            <a href="canvas.html" class="rounded-lg px-3 py-2 text-sm font-medium text-zinc-400 hover:bg-zinc-800/40 hover:text-white transition">Canvas</a>
+            <a href="downloader.html" class="rounded-lg px-3 py-2 text-sm font-medium text-zinc-400 hover:bg-zinc-800/40 hover:text-white transition">Downloader</a>
+            <a href="about.html" class="rounded-lg px-3 py-2 text-sm font-medium text-zinc-400 hover:bg-zinc-800/40 hover:text-white transition">About</a>
+        </div>
+    </nav>
+
+    <!-- ====== MAIN ====== -->
+    <main>
+        <section class="px-4 py-16 md:px-6 md:py-24">
+            <div class="mx-auto max-w-5xl text-center">
+                <h1 class="text-4xl font-extrabold text-white md:text-6xl lg:text-7xl">NoerzXcode</h1>
+                <p class="mt-3 text-xl font-light text-zinc-300 md:text-2xl">Build. Create. Improve.</p>
+                <p class="mt-1 text-sm text-zinc-500 md:text-base">Modern Web Tools &amp; REST API</p>
+                <p class="mx-auto mt-4 max-w-2xl text-sm text-zinc-400 md:text-base">NoerzXcode adalah identitas digital yang berfokus pada Web Development, Web Tools, API Integration, dan Digital Solutions.</p>
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+                    <a href="tools.html" class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black transition hover:bg-zinc-200 active:scale-95">
+                        <i data-lucide="zap" class="h-4 w-4"></i> Explore Tools
+                    </a>
+                    <a href="about.html" class="inline-flex items-center gap-2 rounded-xl border border-zinc-700 px-6 py-3 text-sm font-medium text-zinc-300 transition hover:border-zinc-500 hover:text-white active:scale-95">
+                        <i data-lucide="info" class="h-4 w-4"></i> About NoerzXcode
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-4 pb-8 md:px-6">
+            <div class="mx-auto max-w-5xl">
+                <div class="grid grid-cols-2 gap-3 rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5 md:grid-cols-4 md:gap-4 md:p-8">
+                    <div class="text-center"><div class="text-2xl font-bold text-white md:text-3xl" id="statTotal">0</div><div class="text-xs text-zinc-500 md:text-sm">Total Tools</div></div>
+                    <div class="text-center"><div class="text-2xl font-bold text-white md:text-3xl" id="statCanvas">0</div><div class="text-xs text-zinc-500 md:text-sm">Canvas Tools</div></div>
+                    <div class="text-center"><div class="text-2xl font-bold text-white md:text-3xl" id="statDownloader">0</div><div class="text-xs text-zinc-500 md:text-sm">Downloader Tools</div></div>
+                    <div class="text-center"><div class="text-2xl font-bold text-white md:text-3xl" id="statApi">0</div><div class="text-xs text-zinc-500 md:text-sm">REST API</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-4 py-12 md:px-6 md:py-16">
+            <div class="mx-auto max-w-7xl">
+                <div class="mb-8 flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-white md:text-2xl">Featured Tools</h2>
+                    <a href="tools.html" class="text-sm text-zinc-400 transition hover:text-white">View all <i data-lucide="arrow-right" class="inline h-4 w-4"></i></a>
+                </div>
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" id="featuredGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="border-t border-zinc-800/60 bg-zinc-950/50 px-4 py-8 md:px-6">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                <div><div class="flex items-center gap-2 text-lg font-bold text-white"><i data-lucide="code-2" class="h-5 w-5"></i> NoerzXcode</div><p class="mt-1 text-xs text-zinc-500">Web Developer • Web Tools • REST API</p></div>
+                <div class="flex flex-wrap gap-4 text-sm text-zinc-400">
+                    <a href="index.html" class="transition hover:text-white">Home</a>
+                    <a href="tools.html" class="transition hover:text-white">Tools</a>
+                    <a href="canvas.html" class="transition hover:text-white">Canvas</a>
+                    <a href="downloader.html" class="transition hover:text-white">Downloader</a>
+                    <a href="about.html" class="transition hover:text-white">About</a>
+                </div>
+            </div>
+            <div class="mt-6 border-t border-zinc-800/40 pt-4 text-center text-xs text-zinc-600">© 2026 NoerzXcode. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <!-- ====== TOAST ====== -->
+    <div id="toastContainer" class="fixed bottom-6 left-1/2 z-[999] w-full max-w-sm -translate-x-1/2 px-4 pointer-events-none"></div>
+
+    <!-- ====== SCRIPTS ====== -->
+    <script type="module">
+        import { STATS, ALL_TOOLS } from './js/data.js';
+        import { CATEGORY_LABELS } from './js/data.js';
+
+        lucide.createIcons();
+
+        // Stats
+        document.getElementById('statTotal').textContent = STATS.total;
+        document.getElementById('statCanvas').textContent = STATS.canvas;
+        document.getElementById('statDownloader').textContent = STATS.downloader;
+        document.getElementById('statApi').textContent = STATS.api;
+
+        // Featured
+        const featuredIds = ['reminder', 'applemusic', 'brat', 'fakecall', 'pinvid', 'noerzxdl'];
+        const featured = ALL_TOOLS.filter(t => featuredIds.includes(t.id));
+        const grid = document.getElementById('featuredGrid');
+        grid.innerHTML = featured.map(tool => `
+            <div class="card-hover rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 transition hover:border-zinc-600">
+                <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-800/80 text-white">
+                    <i data-lucide="${tool.icon}" class="h-5 w-5"></i>
+                </div>
+                <h3 class="font-semibold text-white">${tool.name}</h3>
+                <p class="mt-1 text-xs text-zinc-400">${tool.fungsi}</p>
+                <div class="mt-3 flex items-center justify-between">
+                    <span class="rounded-full bg-zinc-800 px-3 py-0.5 text-[10px] font-medium uppercase tracking-wide text-zinc-400">${CATEGORY_LABELS[tool.category]}</span>
+                    <a href="${tool.category === 'canvas' ? 'canvas.html' : tool.category === 'downloader' ? 'downloader.html' : 'tools.html'}#tool-${tool.id}" class="text-sm text-zinc-400 transition hover:text-white">View Tool →</a>
+                </div>
+            </div>
+        `).join('');
+        lucide.createIcons();
+
+        // Mobile menu
+        const toggle = document.getElementById('menuToggle');
+        const menu = document.getElementById('mobileMenu');
+        let isOpen = false;
+        toggle.addEventListener('click', function() {
+            isOpen = !isOpen;
+            menu.classList.toggle('closed');
+            menu.classList.toggle('open');
+            const icon = toggle.querySelector('i');
+            icon.setAttribute('data-lucide', isOpen ? 'x' : 'menu');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
